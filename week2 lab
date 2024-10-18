@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tax calculator</title>
+</head>
+<body>
+    
+    <h1>CALCULATE YOUR INCOME TAX</h1><br>
+    <input type="number" data-type="number" name="salary" id="salary" placeholder="enter your salary in dollars $">  
+    <p>to get the answer press calculate</p> <br>
+    <button onclick="calculateincometax()">calculate</button>
+
+    <h2 id="result"></h2>
+  
+
+</body>
+<script>
+    function calculateincometax(){
+       
+        let salary= document. getElementbyId('salary').value;
+        salary= parseFloat(salary)
+       
+        if(salary>0)
+        {
+         let tax;
+        
+            if (salary<=15600){
+             tax= salary* 10.5/100;
+    
+        }
+            else if(salary>15600 && salary<=53500){
+             tax=15600* 10.5/100 +(53500-15600)*17.5/100;
+        }
+            else if(salary>53500 && salary<=78100){
+             tax=5600* 10.5/100 +(53500-15600)*17.5/100 +(78100-53500)*30/100;
+        }
+            else if(salary>78100 && salary<=180000){
+                tax=5600* 10.5/100 +(53500-15600)*17.5/100 +(78100-53500)*30/100+(180000-78100)*33/100;
+        }
+            else if(salary>180000){
+                tax=5600* 10.5/100 +(53500-15600)*17.5/100 +(78100-53500)*30/100+(180000-78100)*33/100+(salary-180000)*37/100;
+        }
+         
+        /*document.getElementById("result").innerText=`your incometax is: ${tax}.`;}
+        else {
+          alert("Invalid salary value entered. Please enter a positive number.");
+      
+         }*/
+          document.getElementById(
+            "result"
+          ).innerText = `Your salary is ${salary}. Your tax is ${tax}.`;
+        }
+         else {
+         
+          alert(
+            "Invalid salary value entered. Please enter a positive number."
+          );
+        }
+        
+
+}
+
+    
+
+
+</script>
+</html>
